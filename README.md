@@ -1,5 +1,8 @@
 # Dawn
 Bash Program For Pen-Testers
+For Making Payloads and Exploits
+Network Monitoring
+
 
 Installation :
 First, navigate to the Dawn directory
