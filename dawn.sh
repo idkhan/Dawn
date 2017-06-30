@@ -21,12 +21,24 @@ Red="\033[0;31m"
 Yellow="\033[1;33m"
 
 ############################
+#Banner
+echo -e ${Yellow}
+echo -e
+echo -e " ÛÛÛÛÛÛÛÛÛÛ                                     "  
+echo -e " °°ÛÛÛ°°°°ÛÛÛ                                      "
+echo -e "  °ÛÛÛ   °°ÛÛÛ  ÛÛÛÛÛÛ   ÛÛÛÛÛ ÛÛÛ ÛÛÛÛÛ ÛÛÛÛÛÛÛÛ  "
+echo -e "  °ÛÛÛ    °ÛÛÛ °°°°°ÛÛÛ °°ÛÛÛ °ÛÛÛ°°ÛÛÛ °°ÛÛÛ°°ÛÛÛ "
+echo -e "  °ÛÛÛ    °ÛÛÛ  ÛÛÛÛÛÛÛ  °ÛÛÛ °ÛÛÛ °ÛÛÛ  °ÛÛÛ °ÛÛÛ "
+echo -e "  °ÛÛÛ    ÛÛÛ  ÛÛÛ°°ÛÛÛ  °°ÛÛÛÛÛÛÛÛÛÛÛ   °ÛÛÛ °ÛÛÛ "
+echo -e "  ÛÛÛÛÛÛÛÛÛÛ  °°ÛÛÛÛÛÛÛÛ  °°ÛÛÛÛ°ÛÛÛÛ    ÛÛÛÛ ÛÛÛÛÛ"
+echo -e " °°°°°°°°°°    °°°°°°°°    °°°° °°°°    °°°° °°°°° "
+echo -e
 
+############################
 # Start
 
-echo -e ${Magenta}"===================="${Default}"Welcome To "${Yellow}"Dawn${Magenta}===================="${Default}
-echo -e
-echo -e ${Cyan}"=============Only For Those With The Force=============${Default}"
+echo -e "  ${Red}|${Magenta}-------------------"${Default}"Welcome To "${Yellow}"Dawn${Magenta}-------------------${Red}|"${Default}
+echo -e "  ${Red}|${Cyan}------------Only For Those With The Force------------${Red}|${Default}"
 echo -e ${Red}
 
 ############################
@@ -35,7 +47,7 @@ echo -e ${Red}
 
 echo -e ${Yellow}
 PS3="Select : "
-select begin in "Help" "Network Adaptors List" "Network Adaptors with Aircrack-ng" "De/Activate Device Monitoring" "Monitor Device" "Nmap on Devices on Network" "Change MAC" "Make Payload" "Exit"
+select begin in "Help" "Network Adaptors List" "Network Adaptors with Aircrack-ng" "De/Activate Device Monitoring" "Monitor Device" "Nmap on Devices on Network" "Change MAC" "Network Status" "Make Payload" "Exit"
 do
 ############################
 
@@ -51,28 +63,37 @@ echo -e " 4    | De/Activate Network Monitoring  | De/Activates monitoring on ne
 echo -e " 5    | Monitor Device                  | Monitors Network Device"
 echo -e " 6    | Nmap on Devices on a Network    | Checks for the Device on a Network"
 echo -e " 7    | Change MAC                      | Changes the MAC Address"
-echo -e " 8    | Make Payload                    | Make Metasploit Payload"
-echo -e " 9    | exit                            | Close program ${Yellow}"
+echo -e " 8    | Network Status                  | Check For Networks and tells network status"
+echo -e " 9    | Make Payload                    | Make Metasploit Payload"
+echo -e " 10   | exit                            | Close program ${Yellow}"
 echo 
 			;;
 		"Network Adaptors List")
+			echo -e ${Magenta}
 			ip link
+			echo -e ${Yellow}
 			;;
 		"Network Adaptors with Aircrack-ng")
+			echo -e ${Red}			
 			airmon-ng
+			echo -e ${Yellow}
 			;;
-		"Nmap Devices")
+		"Nmap on Devices on Network")
+			echo -e ${Magenta}
 			read -p "Gateway IP : " gateway_ip
 			read -p "Enter Range [24] : " range
 			read -p "File To Save To : " nmap_file
 			range=${range:-24}
 			nmap -v "$gateway_ip/$range" >> $nmap_file
 			echo "Saved To $nmap_file"
+			echo -e ${Yellow}
 			;;
 		"De/Activate Device Monitoring")
+			echo -e ${Cyan}			
 			read -p "Start/Stop : " airmon_com
 			read -p "Device : " device
 			airmon-ng $airmon_com $device
+			echo -e ${Yellow}
 			;;
 		"Change MAC")
 			read -p "New MAC : " net_mac
@@ -82,8 +103,14 @@ echo
 			ifconfig $mac_device up
 			;;
 		"Monitor Device"*)
+			echo -e ${Red}
 			read -p "Device : " mon_device
 			airodump-ng $mon_device
+			echo -e ${Yellow}
+			;;
+		"Network Status")
+			echo -e ${Cyan}
+			nmcli dev wifi
 			echo -e ${Yellow}
 			;;
 		"Make Payload")
@@ -113,7 +140,7 @@ echo
 					
 		;;
 		esac
-		echo -e ${Yellow}
+		echo -e ${Red}
 		;;
 		Exit*)
 			echo
