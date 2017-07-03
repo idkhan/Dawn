@@ -7,10 +7,18 @@ fi
 
 # Install
 
-apt install macchanger nmap aircrack-ng metasploit-framework
-mkdir /etc/Dawn
-cp dawn.sh /etc/Dawn/
-echo "alias dawn=\"bash /etc/Dawn/dawn.sh\" " >> ~/.bashrc
-echo "alias Dawn=\"bash /etc/Dawn/dawn.sh\" " >> ~/.bashrc
+apt install nmap metasploit-framework aircrack-ng
 
+echo Depencies Installed
+
+ls /etc/ | grep "Dawn" || mkdir /etc/Dawn
+
+cp dawn.sh /etc/Dawn/
+
+grep "alias dawn=\"bash /etc/Dawn/dawn.sh" ~/.bashrc || echo "alias dawn=\"bash /etc/Dawn/dawn.sh\" " >> ~/.bashrc
+
+grep "alias Dawn=\"bash /etc/Dawn/dawn.sh" ~/.bashrc || echo "alias Dawn=\"bash /etc/Dawn/dawn.sh\" " >> ~/.bashrc
+
+echo
 echo "Install Complete"
+echo "To run write Dawn"
