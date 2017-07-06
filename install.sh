@@ -7,7 +7,10 @@ fi
 
 # Install
 
-apt install nmap metasploit-framework aircrack-ng
+apt install nmap 
+apt install metasploit-framework 
+apt install aircrack-ng
+apt install net-tools
 
 echo Depencies Installed
 
