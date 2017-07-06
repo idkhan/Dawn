@@ -110,6 +110,7 @@ echo
 			echo -e ${Yellow}
 			;;
 		"Create (MSF) Listener"*)
+			service postgresql start
 			echo -e ${Red}
 			echo -e "For :"
 			echo -e "1) Windows" 
@@ -134,6 +135,7 @@ echo
 			msfconsole -r meterpreter.rc
 			echo -e ${Yellow}
 			;;
+
 			2*)
 			touch meterpreter.rc
 			echo -e " " > meterpreter.rc
@@ -145,6 +147,7 @@ echo
 			msfconsole -r meterpreter.rc
 			echo -e ${Yellow}
 			;;
+
 			3*)
 			touch meterpreter.rc
 			echo -e " " > meterpreter.rc
@@ -156,6 +159,7 @@ echo
 			msfconsole -r meterpreter.rc
 			echo -e ${Yellow}			
 			;;
+
 			4*)
 			touch meterpreter.rc
 			echo -e " " > meterpreter.rc
